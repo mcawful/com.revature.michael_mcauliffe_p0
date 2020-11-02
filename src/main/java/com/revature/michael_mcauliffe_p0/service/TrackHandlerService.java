@@ -2,26 +2,18 @@ package com.revature.michael_mcauliffe_p0.service;
 
 public interface TrackHandlerService<T> {
 
-	public T getTrack(T obj);
+	public T getTrack();
 	
-	public void setTrack(short trackNumber, String albumTitle, String artistName, String trackName);
+	public short getTrackNumber();
 	
-	public short getTrackNumber(T obj);
+	public String getTrackTitle();
 	
-	public String getAlbumTitle(T obj);
+	public String getAlbumTitle();
 	
-	public String getArtistName(T obj);
+	public String getArtistName();
 	
-	public String getTrackName(T obj);
+	public long getPlayCount();
 	
-	public long getPlayCount(T obj);
-	
-	public void setTrackNumber(short trackNumber);
-		
-	public void setAlbumTitle(String albumTitle);
-		
-	public void setArtistName(String artistName);
-		
-	public void setTrackName(String trackName);
+	public void increasePlayCount();
 	
 }
