@@ -57,7 +57,7 @@ public class TrackHandlerServiceTest {
 	public void getAlbumTitleTest() throws Exception {
 		
 		String expectedAlbumTitle = "Test Album";
-		assertEquals("Should return album title.", expectedAlbumTitle, track.getTrackTitle());
+		assertEquals("Should return album title.", expectedAlbumTitle, track.getAlbumTitle());
 	}
 	
 	@Test

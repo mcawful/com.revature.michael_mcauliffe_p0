@@ -27,43 +27,43 @@ public class Track implements TrackHandlerService {
 
 	@Override
 	public Track getTrack() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this;
 	}
 
 	@Override
 	public short getTrackNumber() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return this.trackNumber;
 	}
 
 	@Override
 	public String getTrackTitle() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.trackTitle;
 	}
 
 	@Override
 	public String getAlbumTitle() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.albumTitle;
 	}
 
 	@Override
 	public String getArtistName() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.artistName;
 	}
 
 	@Override
 	public long getPlayCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return this.playCount;
 	}
 
 	@Override
 	public void increasePlayCount() {
-		// TODO Auto-generated method stub
 		
+		playCount++;
 	}
 }
