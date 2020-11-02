@@ -1,3 +1,7 @@
+/**
+ * Interface to be used with audio and music objects.
+ */
+
 package com.revature.michael_mcauliffe_p0.service;
 
 public interface TrackHandlerService<T> {

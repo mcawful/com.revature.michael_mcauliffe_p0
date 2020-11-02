@@ -1,8 +1,17 @@
+/**
+ * Track class creates Track objects that give information regarding audio and music
+ * tracks which can be set once upon initialization and retrieved through methods
+ * implemented through the TrackServiceHandler interface. The fields contained in the
+ * Track object are values for the track number, track title, album title and artist
+ * name along with a play count field that can be incremented through the
+ * increasePlayCount method.
+ */
+
 package com.revature.michael_mcauliffe_p0.pojos;
 
 import com.revature.michael_mcauliffe_p0.service.TrackHandlerService;
 
-public class Track implements TrackHandlerService {
+public class Track implements TrackHandlerService<Track> {
 
 	private short trackNumber;
 	private String trackTitle;
