@@ -7,12 +7,18 @@ import com.revature.michael_mcauliffe_p0.service.PlaylistHandlerService;
 public class Playlist implements PlaylistHandlerService<Playlist>  {
 	
 	String name;
-	int currentTrack = -1;
-	LinkedList<Track> songList = new LinkedList<Track>();
+	LinkedList<Track> songList;
+	
+	public Playlist() {
+		
+		this.name = "";
+		songList = new LinkedList<Track>();
+	}
 	
 	public Playlist(String name) {
 		
 		this.name = name;
+		songList = new LinkedList<Track>();
 	}
 	
 	@Override

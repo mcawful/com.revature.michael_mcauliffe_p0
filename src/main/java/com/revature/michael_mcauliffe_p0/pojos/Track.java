@@ -19,6 +19,14 @@ public class Track implements TrackHandlerService<Track> {
 	private String artistName;
 	private long playCount = 0;
 	
+	public Track() {
+		
+		this.trackNumber = -1;
+		this.trackTitle = "";
+		this.albumTitle = "";
+		this.artistName = "";
+	}
+	
 	public Track(short trackNumber, String trackTitle, String albumTitle, String artistName) {
 		
 		this.trackNumber = trackNumber;
