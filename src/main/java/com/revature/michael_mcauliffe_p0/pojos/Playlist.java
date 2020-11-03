@@ -17,62 +17,62 @@ public class Playlist implements PlaylistHandlerService<Playlist>  {
 	
 	@Override
 	public Playlist getPlaylist() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this;
 	}
 
 	@Override
 	public LinkedList<Track> getSongList() {
 		// TODO Auto-generated method stub
-		return null;
+		return songList;
 	}
 
 	@Override
 	public String getPlaylistName() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.name;
 	}
 
 	@Override
-	public void renamePlaylist(String newName) {
-		// TODO Auto-generated method stub
+	public void renamePlaylist(String name) {
 		
+		this.name = name;
 	}
 
 	@Override
 	public void addTrack(Track track) {
-		// TODO Auto-generated method stub
 		
+		this.songList.add(track);
 	}
 
 	@Override
 	public void removeTrack(Track track) {
-		// TODO Auto-generated method stub
 		
+		this.songList.remove(track);
 	}
 
 	@Override
 	public void clearPlaylist() {
-		// TODO Auto-generated method stub
 		
+		this.songList.clear();
 	}
 
 	@Override
 	public boolean hasTrack(Track track) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return this.songList.contains(track);
 	}
 
 	@Override
 	public int findTrackPosition(Track track) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return this.songList.indexOf(track);
 	}
 
 	@Override
 	public Track getTrack(int trackPosition) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.songList.get(trackPosition);
 	}
 
 }

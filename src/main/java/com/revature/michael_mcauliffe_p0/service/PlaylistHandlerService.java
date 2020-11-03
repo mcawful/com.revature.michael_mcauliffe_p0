@@ -12,7 +12,7 @@ public interface PlaylistHandlerService <T> {
 		
 	public String getPlaylistName();
 	
-	public void renamePlaylist(String newName);
+	public void renamePlaylist(String name);
 	
 	public void addTrack(Track track);
 	

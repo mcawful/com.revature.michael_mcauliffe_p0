@@ -31,7 +31,7 @@ public class PlaylistHandlerServiceTest {
 		
 		track1 = new Track((short) 6, "Test Track", "Test Album", "Test Artist");
 		track2 = new Track((short) 9, "Hip to be Square", "Fore!", "Heuy Lewis and the News");
-		playlist = new Playlist("Test playlist)");
+		playlist = new Playlist("Test Playlist");
 		playlist.addTrack(track1);
 		playlist.addTrack(track2);
 	}
