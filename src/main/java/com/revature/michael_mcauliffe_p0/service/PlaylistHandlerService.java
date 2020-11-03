@@ -1,6 +1,6 @@
 package com.revature.michael_mcauliffe_p0.service;
 
-import java.util.LinkedList;
+import java.util.List;
 
 import com.revature.michael_mcauliffe_p0.pojos.Track;
 
@@ -8,7 +8,7 @@ public interface PlaylistHandlerService <T> {
 
 	public T getPlaylist();
 	
-	public LinkedList<Track> getSongList();
+	public List<Track> getSongList();
 		
 	public String getPlaylistName();
 	

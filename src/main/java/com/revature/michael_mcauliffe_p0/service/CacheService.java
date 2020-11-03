@@ -9,7 +9,9 @@ public interface CacheService <T> {
 	
 	public void removeFromCache(T obj);
 	
-	public T retreiveFromCache(T obj);
+	public int positionInCache(T obj);
+	
+	public T retreiveFromCache(int position);
 	
 	public void emptyCache();
 	
