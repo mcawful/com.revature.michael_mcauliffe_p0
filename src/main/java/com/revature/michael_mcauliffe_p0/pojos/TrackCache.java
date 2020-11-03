@@ -2,7 +2,6 @@ package com.revature.michael_mcauliffe_p0.pojos;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.function.Predicate;
 
 import com.revature.michael_mcauliffe_p0.service.CacheService;
@@ -53,19 +52,19 @@ public class TrackCache<T> implements CacheService<Track> {
 
 	@Override
 	public boolean contains(Track track) {
-		// TODO Auto-generated method stub
+		
 		return cache.contains(track);
 	}
 
 	@Override
 	public List<Track> retrieveAllItems() {
-		// TODO Auto-generated method stub
+		// TODO Add method to return the full list of Track object
 		return null;
 	}
 
 	@Override
 	public List<Track> retrieveMatching(Predicate<Track> p) {
-		// TODO Auto-generated method stub
+		// TODO Add method to retrieve matching Tracks into a List
 		return null;
 	}
 }

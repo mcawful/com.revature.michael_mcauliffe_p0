@@ -1,12 +1,25 @@
 package com.revature.michael_mcauliffe_p0.pojos;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
 import com.revature.michael_mcauliffe_p0.service.CacheService;
 
-public class PlaylistCache implements CacheService<Playlist> {
+public class PlaylistCache<T> implements CacheService<Playlist> {
 
+	private List<Playlist> cache = new ArrayList<Playlist>();
+	
+	public PlaylistCache() {
+		
+		super();
+	}
+	
+	public PlaylistCache(List<Playlist> cache) {
+
+		this.cache = cache;
+	}
+	
 	@Override
 	public void addToCache(Playlist playlist) {
 		// TODO Auto-generated method stub
