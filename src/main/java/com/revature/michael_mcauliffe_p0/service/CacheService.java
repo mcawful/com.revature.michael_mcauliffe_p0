@@ -11,7 +11,7 @@ public interface CacheService <T> {
 	
 	public int positionInCache(T obj);
 	
-	public T retreiveFromCache(int position);
+	public T retreiveFromCache(int pos);
 	
 	public void emptyCache();
 	

@@ -2,8 +2,8 @@ package com.revature.michael_mcauliffe_p0.service;
 
 import static org.junit.Assert.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,13 +17,13 @@ import com.revature.michael_mcauliffe_p0.pojos.TrackCache;
 public class TrackCacheTest  {
 	
 	private TrackCache<Track> cacheService;	
-	static private Set<Track> testCache;
+	static private List<Track> testCache;
 	Track track1, track2, track3;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		
-		testCache = new HashSet<>();
+		testCache = new ArrayList<>();
 	}
 
 	@AfterClass
@@ -63,6 +63,13 @@ public class TrackCacheTest  {
 		
 		cacheService.removeFromCache(track3);
 		assertEquals("Track " + track3 + " should NOT be in cache.", false, testCache.contains(track3));
+	}
+	
+	@Test
+	public void positionInCacheTest() throws Exception {
+		
+		int position = cacheService.positionInCache(track3);
+		assertEquals("Position '" + position + "' should be '2'.", true, position == 2);
 	}
 	
 	@Test

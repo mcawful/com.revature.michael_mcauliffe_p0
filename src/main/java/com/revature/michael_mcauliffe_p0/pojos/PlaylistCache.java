@@ -8,19 +8,19 @@ import com.revature.michael_mcauliffe_p0.service.CacheService;
 public class PlaylistCache implements CacheService<Playlist> {
 
 	@Override
-	public void addToCache(Playlist obj) {
+	public void addToCache(Playlist playlist) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void removeFromCache(Playlist obj) {
+	public void removeFromCache(Playlist playlist) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public int positionInCache(Playlist obj) {
+	public int positionInCache(Playlist playlist) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -38,7 +38,7 @@ public class PlaylistCache implements CacheService<Playlist> {
 	}
 
 	@Override
-	public boolean contains(Playlist obj) {
+	public boolean contains(Playlist playlist) {
 		// TODO Auto-generated method stub
 		return false;
 	}
