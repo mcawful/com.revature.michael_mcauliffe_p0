@@ -22,49 +22,49 @@ public class PlaylistCache<T> implements CacheService<Playlist> {
 	
 	@Override
 	public void addToCache(Playlist playlist) {
-		// TODO Auto-generated method stub
 		
+		cache.add(playlist);
 	}
 
 	@Override
 	public void removeFromCache(Playlist playlist) {
-		// TODO Auto-generated method stub
 		
+		cache.remove(playlist);
 	}
 
 	@Override
 	public int positionInCache(Playlist playlist) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return cache.indexOf(playlist);
 	}
 
 	@Override
 	public Playlist retreiveFromCache(int position) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return cache.get(position);
 	}
 
 	@Override
 	public void emptyCache() {
-		// TODO Auto-generated method stub
 		
+		cache.clear();
 	}
 
 	@Override
 	public boolean contains(Playlist playlist) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return cache.contains(playlist);
 	}
 
 	@Override
 	public List<Playlist> retrieveAllItems() {
-		// TODO Auto-generated method stub
+		// TODO Add method to return the full list of Playlist objects
 		return null;
 	}
 
 	@Override
 	public List<Playlist> retrieveMatching(Predicate<Playlist> p) {
-		// TODO Auto-generated method stub
+		// TODO Add method to retrieve matching Playlists into a List
 		return null;
 	}
 }
