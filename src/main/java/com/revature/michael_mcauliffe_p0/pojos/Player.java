@@ -4,48 +4,46 @@ import com.revature.michael_mcauliffe_p0.service.PlayerControlsService;
 
 public class Player implements PlayerControlsService<Track> {
 
-	Track currentTrack;
-	boolean isPlaying;
+	private Track currentTrack;
+	private boolean isPlaying;
 	
 	public Player() {
-		currentTrack = new Track();
-		isPlaying = false;
-	}
-	
-	@Override
-	public void play() {
-		// TODO Auto-generated method stub
 		
+		this.currentTrack = null;
+		this.isPlaying = false;
 	}
 
 	@Override
-	public void play(Track track) {
-		// TODO Auto-generated method stub
+	public void load(Track track) {
 		
+		this.currentTrack = track;
+	}
+
+	@Override
+	public void unload() {
+		
+		this.currentTrack = null;
+	}
+
+	@Override
+	public void play() {
+		
+		this.isPlaying = true;
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
 		
+		this.isPlaying = false;
 	}
-
-	@Override
-	public void stop() {
-		// TODO Auto-generated method stub
+	
+	public boolean isPlaying() {
 		
+		return this.isPlaying;
 	}
-
-	@Override
-	public void next(Track track) {
-		// TODO Auto-generated method stub
+	
+	public Track getCurrentTrack() {
 		
-	}
-
-	@Override
-	public void previous(Track track) {
-		// TODO Auto-generated method stub
-		
-	}
-
+		return this.currentTrack;
+	}	
 }
