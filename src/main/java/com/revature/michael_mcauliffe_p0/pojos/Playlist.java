@@ -2,81 +2,69 @@ package com.revature.michael_mcauliffe_p0.pojos;
 
 import java.util.LinkedList;
 
-import com.revature.michael_mcauliffe_p0.service.PlaylistHandlerService;
-
-public class Playlist implements PlaylistHandlerService<Playlist>  {
+public class Playlist {
 	
 	String name;
-	LinkedList<Track> songList;
+	LinkedList<String> songList;
 	
 	public Playlist() {
 		
 		this.name = "";
-		songList = new LinkedList<Track>();
+		songList = new LinkedList<String>();
 	}
 	
 	public Playlist(String name) {
 		
 		this.name = name;
-		songList = new LinkedList<Track>();
+		songList = new LinkedList<String>();
 	}
 	
-	@Override
 	public Playlist getPlaylist() {
 		
 		return this;
 	}
 
-	@Override
-	public LinkedList<Track> getSongList() {
-		// TODO Auto-generated method stub
+	public LinkedList<String> getSongList() {
+		
 		return songList;
 	}
 
-	@Override
 	public String getPlaylistName() {
 		
 		return this.name;
 	}
 
-	@Override
 	public void renamePlaylist(String name) {
 		
 		this.name = name;
 	}
 
-	@Override
 	public void addTrack(Track track) {
 		
-		this.songList.add(track);
+		this.songList.add(Integer.toString(track.hashCode()));
 	}
 
-	@Override
 	public void removeTrack(Track track) {
-		
-		this.songList.remove(track);
+
+		this.songList.remove(Integer.toString(track.hashCode()));
 	}
 
-	@Override
 	public void clearPlaylist() {
 		
 		this.songList.clear();
 	}
 
-	@Override
 	public boolean hasTrack(Track track) {
 		
-		return this.songList.contains(track);
+		return this.songList.contains(Integer.toString(track.hashCode()));
 	}
 
-	@Override
 	public int findTrackPosition(Track track) {
 		
-		return this.songList.indexOf(track);
+		return this.songList.indexOf(Integer.toString(track.hashCode()));
 	}
 
-	@Override
-	public Track getTrack(int trackPosition) {
+	public String getTrack(int trackPosition) {
 		
 		return this.songList.get(trackPosition);
 	}

@@ -12,7 +12,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.revature.michael_mcauliffe_p0.pojos.Track;
-import com.revature.michael_mcauliffe_p0.pojos.TrackCache;
 
 public class TrackCacheTest  {
 	
@@ -95,8 +94,8 @@ public class TrackCacheTest  {
 	
 	@Test
 	public void retrieveAllItemsTest() throws Exception {
-		//TODO: Create tests for future implementation
-		//fail("Not yet implemented");
+
+		assertEquals("Cache should return true.", true, cacheService.retrieveAllItems() == testCache);
 	}
 	
 	@Test

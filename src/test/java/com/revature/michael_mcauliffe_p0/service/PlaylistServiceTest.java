@@ -13,7 +13,7 @@ import org.junit.Test;
 import com.revature.michael_mcauliffe_p0.pojos.Playlist;
 import com.revature.michael_mcauliffe_p0.pojos.Track;
 
-public class PlaylistHandlerServiceTest {
+public class PlaylistServiceTest {
 
 	private Track track1, track2;
 	private Playlist playlist;
@@ -51,14 +51,13 @@ public class PlaylistHandlerServiceTest {
 	@Test
 	public void getSonglistTest() throws Exception {
 		
-		LinkedList<Track> testSongList = new LinkedList<Track>();
-		testSongList.add(track1);
-		testSongList.add(track2);
+		LinkedList<String> testSongList = new LinkedList<String>();
+		testSongList.add(Integer.toString(track1.hashCode()));
+		testSongList.add(Integer.toString(track2.hashCode()));
 		
 		try {
-			assertEquals("Should return true if contents match.", true,
-						testSongList.containsAll(this.playlist.getSongList())
-						&& (testSongList.size() == this.playlist.getSongList().size()));
+			assertEquals("Should return true if contents match.", testSongList.toString(),
+						this.playlist.getSongList().toString());
 			
 		} catch(NullPointerException e) {
 			fail(e.toString());
@@ -89,7 +88,7 @@ public class PlaylistHandlerServiceTest {
 		this.playlist.addTrack(track3);
 		
 		try{
-			assertEquals("Should return the new track.", track3, this.playlist.getSongList().getLast());
+			assertEquals("Should return the new track.", true, this.playlist.hasTrack(track3));
 			
 		} catch(NullPointerException e) {
 			fail(e.toString());
@@ -99,15 +98,16 @@ public class PlaylistHandlerServiceTest {
 	@Test
 	public void removeTrackTest() throws Exception {
 		
-		this.playlist.removeTrack(this.track1);
-		
 		try {
-			assertEquals("Should return false if the first track in the linked list was removed", false,
-						this.playlist.getSongList().getFirst() == this.track1);
+			this.playlist.removeTrack(this.track1);
 			
 		} catch(NullPointerException e){
 			fail(e.toString());
+		} catch(IndexOutOfBoundsException e) {
+			fail(e.toString());
 		}
+		
+		assertEquals("Should return false if track was removed", false, this.playlist.hasTrack(track1));
 	}
 	
 	@Test
@@ -140,10 +140,12 @@ public class PlaylistHandlerServiceTest {
 	}
 	
 	@Test
-	public void getTrackTest() throws Exception {
+	public void getTrackTest() throws Exception 
+	{
 		
 		int trackPosition = 1;
 		
-		assertEquals("Should return expected track", this.track2, this.playlist.getTrack(trackPosition));
+		assertEquals("Should return expected track", Integer.toString(this.track2.hashCode())
+				, this.playlist.getTrack(trackPosition));
 	}
 }

@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.revature.michael_mcauliffe_p0.pojos.Track;
 
-public class TrackHandlerServiceTest {
+public class TrackServiceTest {
 	
 	private Track track;
 	

@@ -12,7 +12,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.revature.michael_mcauliffe_p0.pojos.Playlist;
-import com.revature.michael_mcauliffe_p0.pojos.PlaylistCache;
 import com.revature.michael_mcauliffe_p0.pojos.Track;
 
 public class PlaylistCacheTest  {
@@ -105,8 +104,8 @@ public class PlaylistCacheTest  {
 	
 	@Test
 	public void retrieveAllItemsTest() throws Exception {
-		//TODO: Create tests for future implementation
-		//fail("Not yet implemented");
+
+		assertEquals("Cache should return true.", true, cacheService.retrieveAllItems() == testCache);
 	}
 	
 	@Test

@@ -1,10 +1,10 @@
-package com.revature.michael_mcauliffe_p0.pojos;
+package com.revature.michael_mcauliffe_p0.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-import com.revature.michael_mcauliffe_p0.service.CacheService;
+import com.revature.michael_mcauliffe_p0.pojos.Playlist;
 
 public class PlaylistCache<T> implements CacheService<Playlist> {
 
@@ -58,8 +58,8 @@ public class PlaylistCache<T> implements CacheService<Playlist> {
 
 	@Override
 	public List<Playlist> retrieveAllItems() {
-		// TODO Add method to return the full list of Playlist objects
-		return null;
+		
+		return cache;
 	}
 
 	@Override

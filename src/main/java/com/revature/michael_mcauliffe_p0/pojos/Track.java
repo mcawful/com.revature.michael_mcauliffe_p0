@@ -9,11 +9,10 @@
 
 package com.revature.michael_mcauliffe_p0.pojos;
 
-import com.revature.michael_mcauliffe_p0.service.TrackHandlerService;
-
-public class Track implements TrackHandlerService<Track> {
+public class Track {
 
 	private short trackNumber;
+	private int hashID;
 	private String trackTitle;
 	private String albumTitle;
 	private String artistName;
@@ -25,6 +24,7 @@ public class Track implements TrackHandlerService<Track> {
 		this.trackTitle = "";
 		this.albumTitle = "";
 		this.artistName = "";
+		this.hashID = hash();
 	}
 	
 	public Track(short trackNumber, String trackTitle, String albumTitle, String artistName) {
@@ -33,6 +33,7 @@ public class Track implements TrackHandlerService<Track> {
 		this.trackTitle = trackTitle;
 		this.albumTitle = albumTitle;
 		this.artistName = artistName;
+		this.hashID = hash();
 	}
 	
 	public Track(short trackNumber, String trackTitle, String albumTitle, String artistName, long playCount) {
@@ -44,45 +45,48 @@ public class Track implements TrackHandlerService<Track> {
 		this.playCount = playCount;
 	}
 
-	@Override
 	public Track getTrack() {
 		
 		return this;
 	}
 
-	@Override
 	public short getTrackNumber() {
 		
 		return this.trackNumber;
 	}
 
-	@Override
 	public String getTrackTitle() {
 		
 		return this.trackTitle;
 	}
 
-	@Override
 	public String getAlbumTitle() {
 		
 		return this.albumTitle;
 	}
 
-	@Override
 	public String getArtistName() {
 		
 		return this.artistName;
 	}
+	
+	public int getHashID() {
+		
+		return this.hashID;
+	}
 
-	@Override
 	public long getPlayCount() {
 		
 		return this.playCount;
 	}
 
-	@Override
 	public void increasePlayCount() {
 		
 		playCount++;
+	}
+	
+	private int hash() {
+		
+		return (this.trackNumber + this.trackTitle + this.albumTitle + this.artistName).hashCode();
 	}
 }
