@@ -31,6 +31,18 @@ public class TrackCache<T> implements CacheService<Track> {
 		
 		cache.remove(track);
 	}
+	
+	public boolean removeFromCache(int trackID) {
+		
+		for(Track tempTrack : cache) {
+			
+			if(tempTrack.equals(trackID)) {
+				
+				return cache.remove(tempTrack);
+			}
+		}
+		return false;
+	}
 
 	@Override
 	public int positionInCache(Track track) {
@@ -66,5 +78,15 @@ public class TrackCache<T> implements CacheService<Track> {
 	public List<Track> retrieveMatching(Predicate<Track> p) {
 		// TODO Add method to retrieve matching Tracks into a List
 		return null;
+	}
+	
+	public boolean equals(List<Track> testingCache) {
+		
+		return cache.equals(testingCache);
+	}
+	
+	public boolean equals(TrackCache<Track> testingCache) {
+		
+		return cache.equals(testingCache.retrieveAllItems());
 	}
 }

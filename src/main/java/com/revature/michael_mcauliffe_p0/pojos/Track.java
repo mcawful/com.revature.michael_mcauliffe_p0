@@ -11,8 +11,7 @@ package com.revature.michael_mcauliffe_p0.pojos;
 
 public class Track {
 
-	private short trackNumber;
-	private int hashID;
+	private int trackID = 0;
 	private String trackTitle;
 	private String albumTitle;
 	private String artistName;
@@ -20,39 +19,22 @@ public class Track {
 	
 	public Track() {
 		
-		this.trackNumber = -1;
 		this.trackTitle = "";
 		this.albumTitle = "";
 		this.artistName = "";
-		this.hashID = hash();
 	}
 	
-	public Track(short trackNumber, String trackTitle, String albumTitle, String artistName) {
+	public Track(String trackTitle, String albumTitle, String artistName)  {
 		
-		this.trackNumber = trackNumber;
 		this.trackTitle = trackTitle;
 		this.albumTitle = albumTitle;
 		this.artistName = artistName;
-		this.hashID = hash();
-	}
-	
-	public Track(short trackNumber, String trackTitle, String albumTitle, String artistName, long playCount) {
-		
-		this.trackNumber = trackNumber;
-		this.trackTitle = trackTitle;
-		this.albumTitle = albumTitle;
-		this.artistName = artistName;
-		this.playCount = playCount;
 	}
 
+	
 	public Track getTrack() {
 		
 		return this;
-	}
-
-	public short getTrackNumber() {
-		
-		return this.trackNumber;
 	}
 
 	public String getTrackTitle() {
@@ -70,9 +52,14 @@ public class Track {
 		return this.artistName;
 	}
 	
-	public int getHashID() {
+	public void setTrackID(int trackID) {
 		
-		return this.hashID;
+		this.trackID = trackID;
+	}
+	
+	public int getTrackID() {
+		
+		return this.trackID;
 	}
 
 	public long getPlayCount() {
@@ -80,13 +67,35 @@ public class Track {
 		return this.playCount;
 	}
 
+	public void setPlayCount(long playCount) {
+		
+		this.playCount = playCount;
+	}
+	
 	public void increasePlayCount() {
 		
 		playCount++;
 	}
 	
-	private int hash() {
+	@Override
+    public boolean equals(Object ob) {
 		
-		return (this.trackNumber + this.trackTitle + this.albumTitle + this.artistName).hashCode();
+		if (ob == this)
+            return true;
+ 
+        if (ob == null || ob.getClass() != getClass()) {
+            return false;
+        }
+		
+        Track t = (Track) ob;
+        
+        return t.trackTitle.equals(this.trackTitle)
+        		&& t.albumTitle.equals(this.albumTitle)
+        		&& t.artistName.equals(this.artistName);
+	}
+	
+	public boolean equals(int trackID) {
+		
+		return this.trackID == trackID;
 	}
 }

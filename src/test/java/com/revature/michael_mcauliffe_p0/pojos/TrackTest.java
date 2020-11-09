@@ -1,4 +1,4 @@
-package com.revature.michael_mcauliffe_p0.service;
+package com.revature.michael_mcauliffe_p0.pojos;
 
 import static org.junit.Assert.*;
 
@@ -8,9 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.revature.michael_mcauliffe_p0.pojos.Track;
-
-public class TrackServiceTest {
+public class TrackTest {
 	
 	private Track track;
 	
@@ -25,7 +23,8 @@ public class TrackServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		
-		track = new Track((short) 42, "Test Track", "Test Album", "Test Artist", 5);
+		track = new Track("Test Track", "Test Album", "Test Artist");
+		track.setPlayCount(5);
 	}
 
 	@After
@@ -37,13 +36,6 @@ public class TrackServiceTest {
 		
 		Track testTrack = track;
 		assertEquals("Should return Track object.", testTrack, track.getTrack());
-	}
-	
-	@Test
-	public void getTrackNumberTest() throws Exception {
-		
-		short expectedTrackNumber = 42;
-		assertEquals("Should return track number", expectedTrackNumber, track.getTrackNumber());
 	}
 	
 	@Test
@@ -80,5 +72,13 @@ public class TrackServiceTest {
 		long expectedPlayCount = 6;
 		track.increasePlayCount();
 		assertEquals("Should return incremeneted play count.", expectedPlayCount, track.getPlayCount());
+	}
+	
+	@Test
+	public void equalsTest() throws Exception {
+		
+		Track testTrack = new Track("Test Track", "Test Album", "Test Artist");
+		
+		assertTrue("Should retuen true if tracks match.", track.equals(testTrack));
 	}
 }

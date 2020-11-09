@@ -67,4 +67,14 @@ public class PlaylistCache<T> implements CacheService<Playlist> {
 		// TODO Add method to retrieve matching Playlists into a List
 		return null;
 	}
+	
+	public boolean equals(List<Playlist> playlistCache) {
+		
+		return false;
+	}
+	
+	public boolean equals(PlaylistCache<Playlist> playlistCache) {
+		
+		return false;
+	}
 }

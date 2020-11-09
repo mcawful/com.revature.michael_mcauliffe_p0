@@ -10,6 +10,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.mockito.Mock;
 
 import com.revature.michael_mcauliffe_p0.pojos.Playlist;
 import com.revature.michael_mcauliffe_p0.pojos.Track;
@@ -17,9 +18,14 @@ import com.revature.michael_mcauliffe_p0.pojos.Track;
 public class PlaylistCacheTest  {
 	
 	private PlaylistCache<Playlist> cacheService;	
+	
 	static private List<Playlist> testCache;
-	Playlist playlist1, playlist2;
-	Track track1, track2, track3;
+	
+	@Mock
+	private Playlist playlist1, playlist2;
+	
+	@Mock
+	private Track track1, track2, track3;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -37,9 +43,9 @@ public class PlaylistCacheTest  {
 		playlist1 = new Playlist("Playlist Number One");
 		playlist2 = new Playlist("My second playlist EVA!!");		
 		
-		track1 = new Track((short) 6, "Test Track", "Test Album", "Test Artist");
-		track2 = new Track((short) 9, "Hip to be Square", "Fore!", "Heuy Lewis and the News");
-		track3 = new Track((short) 12, "This", "Is", "Sparta");
+		track1 = new Track("Test Track", "Test Album", "Test Artist");
+		track2 = new Track("Hip to be Square", "Fore!", "Heuy Lewis and the News");
+		track3 = new Track("This", "Is", "Sparta");
 		
 		playlist1.addTrack(track1);
 		playlist1.addTrack(track2);
@@ -64,21 +70,21 @@ public class PlaylistCacheTest  {
 		
 		Playlist playlist3 = new Playlist("My New Mixtape");
 		cacheService.addToCache(playlist3);
-		assertEquals("Playlist " + playlist3 + " should be in cache.", true, testCache.contains(playlist3));
+		assertTrue("Playlist " + playlist3 + " should be in cache.", testCache.contains(playlist3));
 	}
 	
 	@Test
 	public void removeFromCacheTest() throws Exception {
 		
 		cacheService.removeFromCache(playlist1);
-		assertEquals("Playlist " + playlist1 + " should NOT be in cache.", false, testCache.contains(playlist1));
+		assertFalse("Playlist " + playlist1 + " should NOT be in cache.", testCache.contains(playlist1));
 	}
 	
 	@Test
 	public void positionInCacheTest() throws Exception {
 		
 		int position = cacheService.positionInCache(playlist2);
-		assertEquals("Position '" + position + "' should be '1'.", true, position == 1);
+		assertTrue("Position '" + position + "' should be '1'.", position == 1);
 	}
 	
 	@Test
@@ -86,26 +92,26 @@ public class PlaylistCacheTest  {
 		
 		int position = 1;
 		Playlist testPlaylist = cacheService.retreiveFromCache(position);
-		assertEquals("Playlist " + playlist2 + " should be retreived.", true, testPlaylist == playlist2);
+		assertTrue("Playlist " + playlist2 + " should be retreived.", testPlaylist == playlist2);
 	}
 	
 	@Test
 	public void emptyCacheTest() throws Exception {
 		
 		cacheService.emptyCache();
-		assertEquals("Cache should be empty.", true, testCache.isEmpty());
+		assertTrue("Cache should be empty.", testCache.isEmpty());
 	}
 	
 	@Test
 	public void containsTest() throws Exception {
 		
-		assertEquals("Cache should return true.", true, cacheService.contains(playlist1));
+		assertTrue("Cache should return true.", cacheService.contains(playlist1));
 	}
 	
 	@Test
 	public void retrieveAllItemsTest() throws Exception {
 
-		assertEquals("Cache should return true.", true, cacheService.retrieveAllItems() == testCache);
+		assertTrue("Cache should return true.", cacheService.retrieveAllItems() == testCache);
 	}
 	
 	@Test

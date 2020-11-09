@@ -3,25 +3,31 @@ package com.revature.michael_mcauliffe_p0.main;
 import java.util.List;
 import java.util.Scanner;
 
+import com.revature.michael_mcauliffe_p0.pojos.Log;
 import com.revature.michael_mcauliffe_p0.pojos.Player;
 import com.revature.michael_mcauliffe_p0.pojos.Track;
 import com.revature.michael_mcauliffe_p0.service.PlaylistCache;
 import com.revature.michael_mcauliffe_p0.service.TrackCache;
 
 public class PlayerDriver {
-
+	
+	private static Log log = new Log();
 	private static Player player = new Player();
 	private static PlaylistCache playlistCache = new PlaylistCache();
 	private static TrackCache<Track> trackCache = new TrackCache<Track>();
 	private static Scanner scan = new Scanner(System.in);
 	private static Track selectedTrack = new Track();
 	private static int position = -1;
-	
+
 	public static void main(String[] args) {
-		mainMenu();
+		
+		new Thread(() -> {mainMenu();}).start();
+		
 	}
 	
 	public static void mainMenu() {
+		
+		new Thread(() -> {log.sessionStarted();}).start();
 		
 		String userInput;
 		boolean keepAlive = true;
@@ -54,6 +60,7 @@ public class PlayerDriver {
 					break;
 			}
 		} while(keepAlive);
+		new Thread(() -> {log.sessionEnded();}).start();
 	}
 
 	public static void playerMenu() {
@@ -128,23 +135,7 @@ public class PlayerDriver {
 		
 		String userInput;
 		
-		short trackNumber = 0;
 		String trackTitle, albumTitle, artistName;
-		
-		do {
-			System.out.println("Enter the track number:");
-			userInput = scan.nextLine();
-			
-			try{
-				trackNumber = Short.parseShort(userInput);
-			} catch (NumberFormatException nfe) {
-				System.out.println("Error! Not a number!\n");
-				return;
-			}
-			if(trackNumber <= 0) {
-				System.out.println("Number must be greater than 0.\n");
-			}
-		} while (trackNumber <= 0);
 
 		System.out.println("Enter the song name:");
 		userInput = scan.nextLine();
@@ -158,7 +149,7 @@ public class PlayerDriver {
 		userInput = scan.nextLine();
 		artistName = userInput;
 		
-		selectedTrack = new Track(trackNumber, trackTitle, albumTitle, artistName);
+		selectedTrack = new Track(trackTitle, albumTitle, artistName);
 		
 		trackCache.addToCache(selectedTrack);
 		
@@ -201,7 +192,6 @@ public class PlayerDriver {
 		}
 	}
 
-	
 	public static void play() {
 		
 		List<Track> tempTrackList = trackCache.retrieveAllItems();
@@ -241,7 +231,6 @@ public class PlayerDriver {
 		}
 	}
 
-	
 	public static void pause() {
 		
 		if(player.isPlaying()) {
@@ -257,7 +246,6 @@ public class PlayerDriver {
 		}
 	}
 
-	
 	public static void stop() {
 		
 		if(player.isPlaying()) {

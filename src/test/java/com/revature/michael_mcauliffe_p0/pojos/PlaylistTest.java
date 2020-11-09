@@ -1,4 +1,4 @@
-package com.revature.michael_mcauliffe_p0.service;
+package com.revature.michael_mcauliffe_p0.pojos;
 
 import static org.junit.Assert.*;
 
@@ -10,10 +10,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.revature.michael_mcauliffe_p0.pojos.Playlist;
-import com.revature.michael_mcauliffe_p0.pojos.Track;
-
-public class PlaylistServiceTest {
+public class PlaylistTest {
 
 	private Track track1, track2;
 	private Playlist playlist;
@@ -29,8 +26,8 @@ public class PlaylistServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		
-		track1 = new Track((short) 6, "Test Track", "Test Album", "Test Artist");
-		track2 = new Track((short) 9, "Hip to be Square", "Fore!", "Heuy Lewis and the News");
+		track1 = new Track("Test Track", "Test Album", "Test Artist");
+		track2 = new Track("Hip to be Square", "Fore!", "Heuy Lewis and the News");
 		playlist = new Playlist("Test Playlist");
 		playlist.addTrack(track1);
 		playlist.addTrack(track2);
@@ -84,11 +81,11 @@ public class PlaylistServiceTest {
 	@Test
 	public void addTrackTest() throws Exception {
 		
-		Track track3 = new Track((short) 12, "This", "Is", "Sparta");
+		Track track3 = new Track("This", "Is", "Sparta");
 		this.playlist.addTrack(track3);
 		
 		try{
-			assertEquals("Should return the new track.", true, this.playlist.hasTrack(track3));
+			assertTrue("Should return the new track.", this.playlist.hasTrack(track3));
 			
 		} catch(NullPointerException e) {
 			fail(e.toString());
@@ -107,7 +104,7 @@ public class PlaylistServiceTest {
 			fail(e.toString());
 		}
 		
-		assertEquals("Should return false if track was removed", false, this.playlist.hasTrack(track1));
+		assertFalse("Should return false if track was removed", this.playlist.hasTrack(track1));
 	}
 	
 	@Test
@@ -116,7 +113,7 @@ public class PlaylistServiceTest {
 		this.playlist.clearPlaylist();
 		
 		try {
-			assertEquals("Should return an empty songlist.", true, this.playlist.getSongList().isEmpty());
+			assertTrue("Should return an empty songlist.", this.playlist.getSongList().isEmpty());
 			
 		} catch(NullPointerException e){
 			fail(e.toString());
@@ -126,7 +123,7 @@ public class PlaylistServiceTest {
 	@Test
 	public void hasTrackTest() throws Exception {
 		
-		assertEquals("Should return true if track exists in the playlist.", true,
+		assertTrue("Should return true if track exists in the playlist.",
 					this.playlist.hasTrack(this.track1));
 	}
 	
@@ -147,5 +144,16 @@ public class PlaylistServiceTest {
 		
 		assertEquals("Should return expected track", Integer.toString(this.track2.hashCode())
 				, this.playlist.getTrack(trackPosition));
+	}
+	
+	@Test
+	public void equalsTest() throws Exception {
+		
+		Playlist testPlaylist= new Playlist("Test Playlist");
+		
+		testPlaylist.addTrack(track1);
+		testPlaylist.addTrack(track2);
+		
+		assertTrue("Should return true if tracks are the same", playlist.equals(testPlaylist));
 	}
 }

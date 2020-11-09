@@ -4,8 +4,8 @@ import java.util.LinkedList;
 
 public class Playlist {
 	
-	String name;
-	LinkedList<String> songList;
+	private String name;
+	private LinkedList<String> songList;
 	
 	public Playlist() {
 		
@@ -69,4 +69,19 @@ public class Playlist {
 		return this.songList.get(trackPosition);
 	}
 
+	@Override
+    public boolean equals(Object ob) {
+		
+		if (ob == this)
+            return true;
+ 
+        if (ob == null || ob.getClass() != getClass()) {
+            return false;
+        }
+		
+        Playlist p = (Playlist) ob;
+        
+        return p.name.equals(this.name)
+        		&& p.songList.equals(this.songList);
+	}
 }
