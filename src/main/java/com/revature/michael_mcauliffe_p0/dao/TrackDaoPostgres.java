@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.michael_mcauliffe_p0.pojos.Log;
@@ -163,8 +164,34 @@ public class TrackDaoPostgres implements TrackDao {
 
 	@Override
 	public List<Track> getAllTracks() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
+		String sql = "select * from tracks order by track_id;";
+		
+		List<Track> trackList = new ArrayList<Track>();
+		
+		try(Connection conn = connUtil.createConnection()){
+			
+			ps = conn.prepareStatement(sql);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				Track track = new Track(rs.getString("track_title"), rs.getString("album_title"),
+						rs.getString("artist_name"));
+
+				track.setTrackID(rs.getInt("track_id"));
+				track.setPlayCount(rs.getInt("play_count"));
+				
+				trackList.add(track);
+			}
+		
+			return trackList;
+			
+		} catch(SQLException e) {
+			
+			log.info(e.getMessage());
+			return null;
+		}
+	}
 }

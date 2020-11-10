@@ -1,5 +1,7 @@
 package com.revature.michael_mcauliffe_p0.controllers;
 
+import java.util.List;
+
 import com.revature.michael_mcauliffe_p0.dao.TrackDao;
 import com.revature.michael_mcauliffe_p0.dao.TrackDaoPostgres;
 import com.revature.michael_mcauliffe_p0.pojos.Log;
@@ -177,19 +179,20 @@ public class TrackController {
 			
 			if(track != null) {
 				
-				ctx.html("The following track was retreived:\n"
+				ctx.html("The following track was retrieved:\n"
 						+ "\nTrack ID: " + track.getTrackID()
 						+ "\nTitle: " + track.getTrackTitle()
 						+ "\nAlbum: " + track.getAlbumTitle()
 						+ "\nArtist: " + track.getArtistName());
 				
-				new Thread(() -> {this.log.info("Track was retreived successfully.\n");}).start();
+				new Thread(() -> {this.log.info("Track was retrieved successfully.\n");}).start();
 			}
 			else {
 				
-				ctx.status(400);
+				ctx.status(204);
 				ctx.html("No track found with matching track ID.");
-				new Thread(() -> {this.log.info("No track with matching track ID was found.\n");}).start();				
+				
+				new Thread(() -> {this.log.info("Attempted retrieval of non existent track.\n");}).start();				
 			}
 			
 		} catch (NumberFormatException nfe) {
@@ -205,6 +208,67 @@ public class TrackController {
 		} finally {
 			
 			ctx.status(400);
+		}
+	}
+
+	public void getTrackList(Context ctx) throws Exception {
+	
+		new Thread(() -> {log.info("Responding to get all tracks get request.");}).start();
+		
+		TrackDao trackDao = new TrackDaoPostgres();
+		
+		try {
+			
+			List<Track> trackList = trackDao.getAllTracks();
+			
+			if(!trackList.isEmpty()) {
+				
+				String htmlResponse = "Current track list:\n\n";
+				
+				for(Track tempTrack : trackList) {
+					
+					htmlResponse += "[" + tempTrack.getTrackID() + "] "
+									+ tempTrack.getTrackTitle() + " by "
+									+ tempTrack.getArtistName() + "\n";
+				}
+				ctx.html(htmlResponse);
+				
+				new Thread(() -> {this.log.info("Full track list was retrieved successfully.\n");}).start();
+			}
+			else {
+				
+				ctx.html("No tracks have been uploaded");
+			}
+			ctx.status(200);
+			
+		} catch(Exception e) {
+			
+			ctx.status(400);
+			ctx.html("Error processing request.");
+			new Thread(() -> {log.info("Exception caught: " + e + "\n");}).start();
+		}
+	}
+	
+	public void syncWithDatabase() throws Exception {
+		
+		TrackDao trackDao = new TrackDaoPostgres();
+		
+		try {
+			
+			List<Track> trackList = trackDao.getAllTracks();
+			
+			for(Track tempTrack : trackList) {
+				
+				if(!trackCache.contains(tempTrack)) trackCache.addToCache(tempTrack);
+			}
+			new Thread(() -> {log.info("Track list synchronization successful.\n");}).start();
+			//ctx.status(200);
+			
+		} catch(Exception e) {
+			
+			//ctx.status(500);
+			//ctx.html("Local cache could not be synchronized with database.");
+			new Thread(() -> {log.info("Exception caught: " + e + "\n");}).start();
 		}
 	}
 }

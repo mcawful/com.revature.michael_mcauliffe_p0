@@ -14,9 +14,19 @@ public class ServerDriver {
 		
 		new Thread(() -> {log.sessionStarted();}).start();
 		Javalin app = Javalin.create().start(9090);
-		app.post("/addTrack", ctx -> trackController.addTrack(ctx));
-		app.delete("/removeTrack", ctx -> trackController.removeTrack(ctx));
-		app.post("/updateTrack", ctx -> trackController.updateTrack(ctx));
-		app.get("/getTrack",  ctx -> trackController.getTrack(ctx));
+		
+		try {
+			trackController.syncWithDatabase();
+			app.post("/addTrack", ctx -> trackController.addTrack(ctx));
+			app.delete("/removeTrack", ctx -> trackController.removeTrack(ctx));
+			app.post("/updateTrack", ctx -> trackController.updateTrack(ctx));
+			app.get("/getTrack",  ctx -> trackController.getTrack(ctx));
+			app.get("/getTrackList", ctx -> trackController.getTrackList(ctx));
+		} catch (Exception e) {
+			
+			app.stop();
+			e.printStackTrace();
+		}
+		
 	}
 }
