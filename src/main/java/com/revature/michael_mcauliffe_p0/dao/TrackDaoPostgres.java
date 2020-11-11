@@ -17,12 +17,7 @@ public class TrackDaoPostgres implements TrackDao {
 	
 	private PreparedStatement ps;
 	
-	private ConnectionUtil connUtil = new ConnectionUtil();
-	
-	public void setConnUtil(ConnectionUtil connUtil) {
-		
-		this.connUtil = connUtil;
-	}
+	Connection conn = ConnectionUtil.getInstance().getConnection();
 	
 	@Override
 	public Track addTrack(Track track) throws SQLException {
@@ -30,7 +25,7 @@ public class TrackDaoPostgres implements TrackDao {
 		String sql = "insert into tracks (track_title, album_title, artist_name, play_count)"
 		+ " values (?, ?, ?, ?) returning *;";
 		
-		try(Connection conn = connUtil.createConnection()){
+		try {
 			
 			ps = conn.prepareStatement(sql);
 			
@@ -55,12 +50,12 @@ public class TrackDaoPostgres implements TrackDao {
 	}
 
 	@Override
-	public Track updateTrack(int trackID, Track track) {
+	public Track updateTrack(int trackID, Track track) throws SQLException {
 		
 		String sql = "update tracks set track_title = ?, album_title = ?, artist_name = ? "
 				+ "where track_id = ? returning *;";
 
-		try(Connection conn = connUtil.createConnection()){
+		try {
 			
 			ps = conn.prepareStatement(sql);
 			
@@ -73,7 +68,7 @@ public class TrackDaoPostgres implements TrackDao {
 			
 			rs.next();
 			
-			track.setPlayCount(rs.getInt("play_count"));
+			track.setPlayCount(rs.getLong("play_count"));
 			
 			return track;
 			
@@ -85,9 +80,44 @@ public class TrackDaoPostgres implements TrackDao {
 	}
 
 	@Override
-	public boolean incrementPlayCount(int trackID) {
-		// TODO Auto-generated method stub
-		return false;
+	public long incrementPlayCount(int trackID) throws SQLException {
+
+		String sql = "select play_count from tracks where track_id = ? returning play_count;";
+		
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, trackID);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				
+				long playCount = rs.getLong("play_count");
+				
+				playCount++;
+				
+				sql = "update tracks set play_count = ? where track_id = ? returning play_count;";
+
+				ps = conn.prepareStatement(sql);
+				ps.setLong(1, playCount);
+				ps.setInt(2, trackID);
+				rs = ps.executeQuery();
+				
+				rs.next();
+				
+				if(rs.getLong("play_count") == playCount){
+					
+					return playCount;
+				}
+
+			}
+		} catch(SQLException e) {
+			
+			log.info(e.getMessage());
+			return -1L;
+		}
+		return -1L;
 	}
 
 	@Override
@@ -95,7 +125,7 @@ public class TrackDaoPostgres implements TrackDao {
 
 		String sql = "delete from tracks where track_id = ? returning *;";
 		
-		try(Connection conn = connUtil.createConnection()){
+		try {
 			
 			ps = conn.prepareStatement(sql);
 			
@@ -109,7 +139,7 @@ public class TrackDaoPostgres implements TrackDao {
 						rs.getString("artist_name"));
 
 				track.setTrackID(rs.getInt("track_id"));
-				track.setPlayCount(rs.getInt("play_count"));
+				track.setPlayCount(rs.getLong("play_count"));
 				
 				return track;
 			}
@@ -124,13 +154,53 @@ public class TrackDaoPostgres implements TrackDao {
 	}
 
 	@Override
-	public int getPlayCount(int trackID) {
-		// TODO Auto-generated method stub
-		return 0;
+	public long getPlayCount(int trackID) throws SQLException {
+
+		String sql = "select play_count from tracks where track_id = ?;";
+		
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, trackID);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				
+				return rs.getLong("play_count");
+			}
+			
+		
+		} catch(SQLException e) {
+			
+			log.info(e.getMessage());
+			return -1L;
+		}
+		return -1L;
 	}
 
 	@Override
-	public Track getTrack(int trackID) {
+	public List<Track> getTrack(int trackID, String trackTitle, String albumTitle, String artistName)
+			throws SQLException {
+		
+		String sqlByID = "select * from tracks where track_id = ?;";
+		
+		String sqlBySearch = "select * from tracks where"
+				+ " lower(track_title) like lower('%' + ? + '%')"
+				+ "	and lower(album_title) like lower('%' + ? + '%')"
+				+ "	and lower(artist_name) like lower('%' + ? + '%');";
+		
+		if(trackID > 0) {
+			
+						
+		}
+		
+		return null;
+	}
+
+	/*@Override
+	public Track getTrack(int trackID) throws SQLException {
 
 		String sql = "select * from tracks where track_id = ?;";
 		
@@ -148,7 +218,7 @@ public class TrackDaoPostgres implements TrackDao {
 						rs.getString("artist_name"));
 
 				track.setTrackID(rs.getInt("track_id"));
-				track.setPlayCount(rs.getInt("play_count"));
+				track.setPlayCount(rs.getLong("play_count"));
 				
 				return track;
 			}
@@ -163,7 +233,7 @@ public class TrackDaoPostgres implements TrackDao {
 	}
 
 	@Override
-	public List<Track> getAllTracks() {
+	public List<Track> getAllTracks() throws SQLException {
 
 		String sql = "select * from tracks order by track_id;";
 		
@@ -181,7 +251,7 @@ public class TrackDaoPostgres implements TrackDao {
 						rs.getString("artist_name"));
 
 				track.setTrackID(rs.getInt("track_id"));
-				track.setPlayCount(rs.getInt("play_count"));
+				track.setPlayCount(rs.getLong("play_count"));
 				
 				trackList.add(track);
 			}
@@ -193,5 +263,5 @@ public class TrackDaoPostgres implements TrackDao {
 			log.info(e.getMessage());
 			return null;
 		}
-	}
+	}*/
 }

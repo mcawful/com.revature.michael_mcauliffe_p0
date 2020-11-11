@@ -9,15 +9,14 @@ public interface TrackDao {
 
 	public Track addTrack(Track track) throws SQLException;
 	
-	public Track updateTrack(int trackID, Track track);
+	public Track updateTrack(int trackID, Track track) throws SQLException;
 	
-	public boolean incrementPlayCount(int trackID);
+	public long incrementPlayCount(int trackID) throws SQLException;
 	
 	public Track removeTrack(int trackID) throws SQLException;
 	
-	public int getPlayCount(int trackID);
+	public long getPlayCount(int trackID) throws SQLException;
 	
-	public Track getTrack(int trackID);
-	
-	public List<Track> getAllTracks();
+	public List<Track> getTrack(int trackID, String trackTitle,
+			String albumTitle,  String artistName) throws SQLException;
 }

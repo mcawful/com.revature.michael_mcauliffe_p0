@@ -1,5 +1,6 @@
 package com.revature.michael_mcauliffe_p0.controllers;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.revature.michael_mcauliffe_p0.dao.TrackDao;
@@ -237,7 +238,7 @@ public class TrackController {
 			}
 			else {
 				
-				ctx.html("No tracks have been uploaded");
+				ctx.html("No tracks have been uploaded.");
 			}
 			ctx.status(200);
 			
@@ -249,7 +250,16 @@ public class TrackController {
 		}
 	}
 	
+	public void dynamicSearch(Context ctx) throws SQLException {
+		
+		new Thread(() -> {log.info("Responding to dynamic search request.");}).start();
+		
+		
+	}
+	
 	public void syncWithDatabase() throws Exception {
+		
+		new Thread(() -> {log.info("Attempt database synchronization with local cache.\n");}).start();
 		
 		TrackDao trackDao = new TrackDaoPostgres();
 		
@@ -261,7 +271,7 @@ public class TrackController {
 				
 				if(!trackCache.contains(tempTrack)) trackCache.addToCache(tempTrack);
 			}
-			new Thread(() -> {log.info("Track list synchronization successful.\n");}).start();
+			new Thread(() -> {log.info("Cache synchronization with database successful!\n");}).start();
 			//ctx.status(200);
 			
 		} catch(Exception e) {

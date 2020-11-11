@@ -10,6 +10,8 @@ public class ServerDriver {
 	private static Log log = new Log();
 	private static TrackController trackController = new TrackController();
 	
+	private static final String TRACK_PATH = "/track";
+	
 	public static void main(String[] args) {
 		
 		new Thread(() -> {log.sessionStarted();}).start();
@@ -17,10 +19,10 @@ public class ServerDriver {
 		
 		try {
 			trackController.syncWithDatabase();
-			app.post("/addTrack", ctx -> trackController.addTrack(ctx));
-			app.delete("/removeTrack", ctx -> trackController.removeTrack(ctx));
-			app.post("/updateTrack", ctx -> trackController.updateTrack(ctx));
-			app.get("/getTrack",  ctx -> trackController.getTrack(ctx));
+			app.post(TRACK_PATH, ctx -> trackController.addTrack(ctx));
+			app.put(TRACK_PATH, ctx -> trackController.updateTrack(ctx));
+			app.delete(TRACK_PATH, ctx -> trackController.removeTrack(ctx));
+			app.get(TRACK_PATH,  ctx -> trackController.getTrack(ctx));
 			app.get("/getTrackList", ctx -> trackController.getTrackList(ctx));
 		} catch (Exception e) {
 			

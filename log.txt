@@ -18,3 +18,124 @@
 2020-11-09 23:41:50 INFO  root:11 - Responding to get Track post request.
 2020-11-09 23:41:50 INFO  root:11 - Track was retrieved successfully.
 
+2020-11-10 09:59:50 INFO  root:21 - Session has started.
+2020-11-10 09:59:50 INFO  root:11 - Track list synchronization successful.
+
+2020-11-10 10:00:53 INFO  root:11 - Responding to get all tracks get request.
+2020-11-10 10:00:53 INFO  root:11 - Full track list was retrieved successfully.
+
+2020-11-10 10:03:03 INFO  root:11 - Responding to add Track post request.
+2020-11-10 10:03:03 INFO  root:11 - Track added successfully.
+
+2020-11-10 10:03:21 INFO  root:11 - Responding to removing Track post request.
+2020-11-10 10:03:21 INFO  root:11 - Track removed successfully.
+
+2020-11-10 11:20:36 INFO  root:21 - Session has started.
+2020-11-10 11:20:36 INFO  root:11 - Attempt database synchronization with local cache.
+
+2020-11-10 11:20:36 INFO  root:11 - Cache synchronization with database successful!
+
+2020-11-10 11:20:43 INFO  root:11 - Responding to get all tracks get request.
+2020-11-10 11:21:33 INFO  root:21 - Session has started.
+2020-11-10 11:21:33 INFO  root:11 - Attempt database synchronization with local cache.
+
+2020-11-10 11:21:34 INFO  root:11 - Cache synchronization with database successful!
+
+2020-11-10 11:21:37 INFO  root:11 - Responding to get all tracks get request.
+2020-11-10 11:21:42 INFO  root:11 - Responding to removing Track post request.
+2020-11-10 11:21:42 INFO  root:11 - Attempted removal of non existent track.
+
+2020-11-10 11:21:48 INFO  root:11 - Responding to update Track post request.
+2020-11-10 11:21:48 INFO  root:11 - ResultSet not positioned properly, perhaps you need to call next.
+2020-11-10 11:21:48 INFO  root:11 - Attempted update with invalid track ID.
+
+2020-11-10 11:21:57 INFO  root:11 - Responding to get Track post request.
+2020-11-10 11:21:57 INFO  root:11 - Attempted retrieval of non existent track.
+
+2020-11-10 11:23:21 INFO  root:11 - Responding to add Track post request.
+2020-11-10 11:23:21 INFO  root:11 - Track added successfully.
+
+2020-11-10 11:23:44 INFO  root:11 - Responding to add Track post request.
+2020-11-10 11:23:44 INFO  root:11 - Track added successfully.
+
+2020-11-10 11:24:08 INFO  root:11 - Responding to add Track post request.
+2020-11-10 11:24:08 INFO  root:11 - Track added successfully.
+
+2020-11-10 11:24:31 INFO  root:11 - Responding to add Track post request.
+2020-11-10 11:24:31 INFO  root:11 - Track added successfully.
+
+2020-11-10 11:25:38 INFO  root:11 - Responding to add Track post request.
+2020-11-10 11:25:38 INFO  root:11 - Track added successfully.
+
+2020-11-10 11:26:02 INFO  root:11 - Responding to add Track post request.
+2020-11-10 11:26:02 INFO  root:11 - Track added successfully.
+
+2020-11-10 11:26:27 INFO  root:11 - Responding to add Track post request.
+2020-11-10 11:26:27 INFO  root:11 - Track added successfully.
+
+2020-11-10 11:26:59 INFO  root:11 - Responding to update Track post request.
+2020-11-10 11:26:59 INFO  root:11 - Track updated successfully.
+
+2020-11-10 11:27:25 INFO  root:11 - Responding to add Track post request.
+2020-11-10 11:27:25 INFO  root:11 - Track added successfully.
+
+2020-11-10 11:27:47 INFO  root:11 - Responding to add Track post request.
+2020-11-10 11:27:47 INFO  root:11 - Track added successfully.
+
+2020-11-10 11:28:01 INFO  root:11 - Responding to get all tracks get request.
+2020-11-10 11:28:01 INFO  root:11 - Full track list was retrieved successfully.
+
+2020-11-10 11:30:20 INFO  root:21 - Session has started.
+2020-11-10 11:30:20 INFO  root:11 - Attempt database synchronization with local cache.
+
+2020-11-10 11:30:20 INFO  root:11 - Cache synchronization with database successful!
+
+2020-11-10 11:30:28 INFO  root:11 - Responding to update Track post request.
+2020-11-10 11:30:28 INFO  root:11 - Track updated successfully.
+
+2020-11-10 12:43:29 INFO  root:21 - Session has started.
+2020-11-10 12:43:29 INFO  root:11 - Attempt database synchronization with local cache.
+
+2020-11-10 12:43:30 INFO  root:11 - Cache synchronization with database successful!
+
+2020-11-10 12:43:51 INFO  root:11 - Responding to get all tracks get request.
+2020-11-10 12:43:52 INFO  root:11 - Full track list was retrieved successfully.
+
+2020-11-10 12:45:16 INFO  root:21 - Session has started.
+2020-11-10 12:45:17 INFO  root:11 - Attempt database synchronization with local cache.
+
+2020-11-10 12:45:17 INFO  root:11 - Cache synchronization with database successful!
+
+2020-11-10 12:45:29 INFO  root:11 - Responding to get Track post request.
+2020-11-10 12:45:29 INFO  root:11 - Track was retrieved successfully.
+
+2020-11-10 15:05:39 INFO  root:21 - Session has started.
+2020-11-10 15:05:40 INFO  root:11 - Attempt database synchronization with local cache.
+
+2020-11-10 15:05:40 INFO  root:11 - Cache synchronization with database successful!
+
+2020-11-10 15:12:29 INFO  root:21 - Session has started.
+2020-11-10 15:12:30 INFO  root:11 - Attempt database synchronization with local cache.
+
+2020-11-10 15:12:30 INFO  root:11 - Cache synchronization with database successful!
+
+2020-11-10 15:12:35 INFO  root:11 - Responding to get Track post request.
+2020-11-10 15:12:35 INFO  root:11 - Track was retrieved successfully.
+
+2020-11-10 15:17:48 INFO  root:21 - Session has started.
+2020-11-10 15:17:48 INFO  root:11 - Attempt database synchronization with local cache.
+
+2020-11-10 15:17:48 INFO  root:11 - Cache synchronization with database successful!
+
+2020-11-10 15:18:15 INFO  root:11 - Responding to get all tracks get request.
+2020-11-10 15:18:16 INFO  root:11 - Full track list was retrieved successfully.
+
+2020-11-10 15:19:53 INFO  root:11 - Responding to get Track post request.
+2020-11-10 15:19:53 INFO  root:11 - Track was retrieved successfully.
+
+2020-11-10 15:20:47 INFO  root:11 - Responding to update Track post request.
+2020-11-10 15:20:47 INFO  root:11 - Track updated successfully.
+
+2020-11-10 15:20:52 INFO  root:11 - Responding to update Track post request.
+2020-11-10 15:20:52 INFO  root:11 - Track updated successfully.
+
