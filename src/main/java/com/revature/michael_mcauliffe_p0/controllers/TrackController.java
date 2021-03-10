@@ -81,7 +81,7 @@ public class TrackController {
 				track.setTrackID(trackID);
 				this.trackCache.addToCache(track);
 				
-				
+				ctx.status(200);
 				
 				ctx.html("The following track was updated:\n"
 						+ "\nTrack ID: " + track.getTrackID()
@@ -101,19 +101,17 @@ public class TrackController {
 			}
 		} catch (NumberFormatException nfe) {
 			
+			ctx.status(400);
 			ctx.html("Numeric input expected for track ID.");
 			new Thread(() -> {log.info("Exception caught: " + nfe + "\n");}).start();
 		}
 		
 		catch(Exception e) {
 
+			ctx.status(400);
 			ctx.html("Error processing request.");
 			
-			new Thread(() -> {log.info("Exception caught: " + e + "\n");}).start();
-			
-		} finally {
-			
-			ctx.status(400);
+			new Thread(() -> {log.info("Exception caught: " + e + "\n");}).start();	
 		}
 	}
 	
@@ -151,17 +149,15 @@ public class TrackController {
 			
 		} catch (NumberFormatException nfe) {
 			
+			ctx.status(400);
 			ctx.html("Numeric input expected for track ID.");
 			new Thread(() -> {log.info("Exception caught: " + nfe + "\n");}).start();
 		
 		} catch (Exception e) {
 
-			ctx.html("Error processing request.");
-			new Thread(() -> {log.info("Exception caught: " + e + "\n");}).start();
-			
-		} finally {
-			
 			ctx.status(400);
+			ctx.html("Error processing request.");
+			new Thread(() -> {log.info("Exception caught: " + e + "\n");}).start();	
 		}
 	}
 
@@ -178,6 +174,8 @@ public class TrackController {
 			Track track = trackDao.getTrack(trackID);
 			
 			if(track != null) {
+				
+				ctx.status(200);
 				
 				ctx.html("The following track was retrieved:\n"
 						+ "\nTrack ID: " + track.getTrackID()
@@ -197,17 +195,15 @@ public class TrackController {
 			
 		} catch (NumberFormatException nfe) {
 			
+			ctx.status(400);
 			ctx.html("Numeric input expected for track ID.");
 			new Thread(() -> {log.info("Exception caught: " + nfe + "\n");}).start();
 		
 		} catch (Exception e) {
 
+			ctx.status(400);
 			ctx.html("Error processing request.");
 			new Thread(() -> {log.info("Exception caught: " + e + "\n");}).start();
-			
-		} finally {
-			
-			ctx.status(400);
 		}
 	}
 

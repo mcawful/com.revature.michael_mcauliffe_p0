@@ -17,10 +17,10 @@ public class ServerDriver {
 		
 		try {
 			trackController.syncWithDatabase();
-			app.post("/addTrack", ctx -> trackController.addTrack(ctx));
-			app.delete("/removeTrack", ctx -> trackController.removeTrack(ctx));
-			app.post("/updateTrack", ctx -> trackController.updateTrack(ctx));
-			app.get("/getTrack",  ctx -> trackController.getTrack(ctx));
+			app.post("/track", ctx -> trackController.addTrack(ctx));
+			app.delete("/track", ctx -> trackController.removeTrack(ctx));
+			app.put("/track", ctx -> trackController.updateTrack(ctx));
+			app.get("/track",  ctx -> trackController.getTrack(ctx));
 			app.get("/getTrackList", ctx -> trackController.getTrackList(ctx));
 		} catch (Exception e) {
 			

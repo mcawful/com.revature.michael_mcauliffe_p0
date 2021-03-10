@@ -10,11 +10,14 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import com.revature.michael_mcauliffe_p0.pojos.Playlist;
 import com.revature.michael_mcauliffe_p0.pojos.Track;
 
+@RunWith(MockitoJUnitRunner.class)
 public class PlaylistCacheTest  {
 	
 	private PlaylistCache<Playlist> cacheService;	

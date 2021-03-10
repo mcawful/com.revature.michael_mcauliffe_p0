@@ -1,20 +1,63 @@
-2020-11-09 22:48:54 INFO  root:21 - Session has started.
-2020-11-09 22:49:41 INFO  root:11 - Responding to get all tracks get request.
-2020-11-09 22:49:41 INFO  root:11 - Full track list was retrieved successfully.
+2020-11-10 21:06:14 INFO  root:21 - Session has started.
+2020-11-10 21:06:15 INFO  root:11 - Track list synchronization successful.
 
-2020-11-09 23:33:40 INFO  root:21 - Session has started.
-2020-11-09 23:33:40 INFO  root:11 - Track list synchronization successful.
-2020-11-09 23:38:46 INFO  root:21 - Session has started.
-2020-11-09 23:38:46 INFO  root:11 - Track list synchronization successful.
-2020-11-09 23:38:50 INFO  root:11 - Responding to get all tracks get request.
-2020-11-09 23:38:50 INFO  root:11 - Full track list was retrieved successfully.
+2020-11-10 21:09:20 INFO  root:21 - Session has started.
+2020-11-10 21:09:20 INFO  root:11 - Track list synchronization successful.
 
-2020-11-09 23:41:14 INFO  root:21 - Session has started.
-2020-11-09 23:41:14 INFO  root:11 - Track list synchronization successful.
+2020-11-10 21:09:28 INFO  root:11 - Responding to get Track post request.
+2020-11-10 21:09:28 INFO  root:11 - Track was retrieved successfully.
 
-2020-11-09 23:41:40 INFO  root:11 - Responding to get Track post request.
-2020-11-09 23:41:40 INFO  root:11 - Attempted retrieval of non existent track.
+2020-11-10 21:10:32 INFO  root:11 - Responding to get all tracks get request.
+2020-11-10 21:10:32 INFO  root:11 - Full track list was retrieved successfully.
 
-2020-11-09 23:41:50 INFO  root:11 - Responding to get Track post request.
-2020-11-09 23:41:50 INFO  root:11 - Track was retrieved successfully.
+2020-11-10 21:12:30 INFO  root:21 - Session has started.
+2020-11-10 21:12:30 INFO  root:11 - Track list synchronization successful.
+
+2020-11-10 23:33:50 INFO  root:21 - Session has started.
+2020-11-10 23:33:51 INFO  root:11 - Track list synchronization successful.
+
+2020-11-11 10:36:23 INFO  root:21 - Session has started.
+2020-11-11 10:36:23 INFO  root:11 - Track list synchronization successful.
+
+2020-11-11 10:36:32 INFO  root:11 - Responding to get all tracks get request.
+2020-11-11 10:36:33 INFO  root:11 - Full track list was retrieved successfully.
+
+2020-11-11 10:36:58 INFO  root:11 - Responding to get all tracks get request.
+2020-11-11 10:36:58 INFO  root:11 - Full track list was retrieved successfully.
+
+2020-11-11 11:00:46 INFO  root:21 - Session has started.
+2020-11-11 11:00:47 INFO  root:11 - Track list synchronization successful.
+
+2020-11-11 11:01:04 INFO  root:11 - Responding to add Track post request.
+2020-11-11 11:01:04 INFO  root:11 - ERROR: duplicate key value violates unique constraint "PK_tracks"
+  Detail: Key (track_id)=(1) already exists.
+2020-11-11 11:01:32 INFO  root:11 - Responding to get Track post request.
+2020-11-11 11:01:32 INFO  root:11 - Track was retrieved successfully.
+
+2020-11-11 11:01:49 INFO  root:11 - Responding to get all tracks get request.
+2020-11-11 11:01:49 INFO  root:11 - Full track list was retrieved successfully.
+
+2020-11-11 11:01:59 INFO  root:11 - Responding to add Track post request.
+2020-11-11 11:01:59 INFO  root:11 - ERROR: duplicate key value violates unique constraint "PK_tracks"
+  Detail: Key (track_id)=(2) already exists.
+2020-11-11 11:02:28 INFO  root:11 - Responding to update Track post request.
+2020-11-11 11:02:28 INFO  root:11 - ResultSet not positioned properly, perhaps you need to call next.
+2020-11-11 11:02:28 INFO  root:11 - Attempted update with invalid track ID.
+
+2020-11-11 11:02:43 INFO  root:11 - Responding to update Track post request.
+2020-11-11 11:02:43 INFO  root:11 - Exception caught: java.lang.NumberFormatException: For input string: "bsdgkjh"
+
+2020-11-11 11:02:54 INFO  root:11 - Responding to get Track post request.
+2020-11-11 11:02:54 INFO  root:11 - Exception caught: java.lang.NumberFormatException: For input string: "fghjas"
+
+2020-11-11 11:03:08 INFO  root:11 - Responding to get Track post request.
+2020-11-11 11:03:08 INFO  root:11 - Attempted retrieval of non existent track.
+
+2020-11-11 11:03:35 INFO  root:11 - Responding to removing Track post request.
+2020-11-11 11:03:35 INFO  root:11 - Track removed successfully.
+
+2020-11-29 20:24:57 INFO  root:21 - Session has started.
+2020-11-29 20:24:57 INFO  root:11 - ERROR: relation "tracks" does not exist
+  Position: 15
+2020-11-29 20:24:57 INFO  root:11 - Exception caught: java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because "trackList" is null
 
